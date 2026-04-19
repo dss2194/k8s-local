@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: base-app
+  namespace: argocd
+  labels:
+    app: base-app
+spec:
+  destination:
+    namespace: argocd
+    name: in-cluster
+  project: infra
+  source:
+    repoURL: https://github.com/dss2194/k8s_local.git
+    path: apps
+    directory:
+      recurse: true
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+---

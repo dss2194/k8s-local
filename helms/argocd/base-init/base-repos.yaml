@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: repo-base
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  project: "infra"
+  url: https://github.com/dss2194/k8s_local.git
+type: Opaque
+
+---
