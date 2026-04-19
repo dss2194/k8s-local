@@ -16,4 +16,5 @@ spec:
       kind: "*"
   sourceRepos:
     -  https://github.com/dss2194/k8s-local.git
+    - docker.io/envoyproxy
 ---
