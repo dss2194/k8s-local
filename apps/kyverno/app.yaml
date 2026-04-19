@@ -16,7 +16,7 @@ spec:
             replicas: 1
 
   destination:
-    server: https://kubernetes.default.svc
+    server: "{{ in-cluster }}"
     namespace: kyverno
 
   ignoreDifferences:
@@ -58,7 +58,7 @@ spec:
           targetRevision: dev
           path: helms/kyverno-policies
       destination:
-        name: https://kubernetes.default.svc
+        name: "{{ in-cluster }}"
         namespace: kyverno-policies
       syncPolicy:
         syncOptions:
