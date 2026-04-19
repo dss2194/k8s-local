@@ -8,7 +8,5 @@ metadata:
 stringData:
   type: git
   project: "infra"
-  url: https://github.com/dss2194/k8s_local.git
+  url: https://github.com/dss2194/k8s-local.git
 type: Opaque
-
----

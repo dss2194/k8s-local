@@ -15,5 +15,5 @@ spec:
     - group: "*"
       kind: "*"
   sourceRepos:
-    -  https://github.com/dss2194/k8s_local.git
+    -  https://github.com/dss2194/k8s-local.git
 ---

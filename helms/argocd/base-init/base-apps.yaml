@@ -11,11 +11,11 @@ spec:
     name: in-cluster
   project: infra
   source:
-    repoURL: https://github.com/dss2194/k8s_local.git
+    repoURL: https://github.com/dss2194/k8s-local.git
     path: apps
     directory:
       recurse: true
-    targetRevision: HEAD
+    targetRevision: dev
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
