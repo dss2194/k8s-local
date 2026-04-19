@@ -17,10 +17,7 @@ spec:
 
     - repoURL: https://github.com/dss2194/k8s-local.git
       targetRevision: dev
-      path: helms/kyverno-policies/forAll
-    - repoURL: https://github.com/dss2194/k8s-local.git
-      targetRevision: dev
-      path: helms/kyverno-policies/{{cluster}}
+      path: helms/kyverno-policies
 
   destination:
     server: https://kubernetes.default.svc
