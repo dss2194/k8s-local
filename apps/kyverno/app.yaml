@@ -11,16 +11,16 @@ spec:
       targetRevision: 3.7.1
       helm:
         values: |
-          replicaCount: 2
+          replicaCount: 1
           admissionController:
-            replicas: 2
+            replicas: 1
 
     - repoURL: https://github.com/dss2194/k8s-local.git
       targetRevision: dev
       path: helms/kyverno-policies
 
   destination:
-    server: https://kubernetes.default.svc
+    server: "{{cluster}}"
     namespace: kyverno
 
   ignoreDifferences:
@@ -38,3 +38,33 @@ spec:
       - CreateNamespace=true
       - ServerSideApply=true
       - SkipDryRunOnMissingResource=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kyverno-policies
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: in-cluster
+  template:
+    metadata:
+      name: "kyverno-policies-{{cluster}}"
+      labels:
+        app: kyverno-policies
+    spec:
+      project: infra
+      sources:
+        - repoURL: https://github.com/dss2194/k8s-local.git
+          targetRevision: dev
+          path: helms/kyverno-policies
+      destination:
+        name: "{{cluster}}"
+        namespace: kyverno-policies
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
